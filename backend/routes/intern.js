@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Intern = require('../models/intern');
 
-// 1. Add Intern (default password)
 router.post('/add', async (req, res) => {
     try {
         const { name, referralCode, totalRaised } = req.body;
@@ -11,7 +10,6 @@ router.post('/add', async (req, res) => {
 
         const total = Number(totalRaised) || 0;
         const referralCode1 = referralCode || `${name.toLowerCase().replace(/\s+/g, '')}2025`;
-        // Simple reward tiers based on amount raised
         const calculateRewards = (amount) => {
             const rewards = [];
             if (amount >= 500) rewards.push("🎁 Bronze Badge");
@@ -27,7 +25,7 @@ router.post('/add', async (req, res) => {
             name,
             referralCode1,
             totalRaised: total,
-            password: '12345678', // default
+            password: '12345678',
             rewards: calculateRewards(total),
             createdAt: new Date()
         });
@@ -41,7 +39,6 @@ router.post('/add', async (req, res) => {
 });
 
 
-// 2. Login Intern
 router.post('/login', async (req, res) => {
     const { name, password } = req.body;
     try {
@@ -50,14 +47,12 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
-        // Optionally, return a token here if you later use auth
         res.status(200).json({ message: 'Login successful', intern });
     } catch (err) {
         res.status(500).json({ message: 'Server error', error: err.message });
     }
 });
 
-// 3. Get Dashboard Info
 router.get('/dashboard/:name', async (req, res) => {
     try {
         const intern = await Intern.findOne({ name: req.params.name });
@@ -75,7 +70,6 @@ router.get('/dashboard/:name', async (req, res) => {
     }
 });
 
-// 4. Change Password
 router.post('/change-password', async (req, res) => {
     const { name, oldPassword, newPassword } = req.body;
 
@@ -95,7 +89,6 @@ router.post('/change-password', async (req, res) => {
     }
 });
 
-// 5. Leaderboard - Get all interns
 router.get('/all', async (req, res) => {
     try {
         const interns = await Intern.find().sort({ totalRaised: -1 });
@@ -105,7 +98,6 @@ router.get('/all', async (req, res) => {
     }
 });
 
-// 6. Optional: Check if intern exists (for signup)
 router.get('/exists/:name', async (req, res) => {
     try {
         const intern = await Intern.findOne({ name: req.params.name });

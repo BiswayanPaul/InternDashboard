@@ -14,7 +14,6 @@ export default function App() {
 
   return (
     <div className="h-screen flex flex-col bg-gray-100 overflow-hidden">
-      {/* Header */}
       <header className="bg-white shadow-md p-4 shrink-0">
         <nav className="flex justify-center gap-6 text-blue-600 font-medium">
           <Link to="/">Home</Link>
@@ -35,7 +34,6 @@ export default function App() {
         </nav>
       </header>
 
-      {/* Main Content */}
       <main className="flex-1 overflow-y-auto p-6">
         <Routes>
           <Route path="/" element={<Home />} />

@@ -16,7 +16,6 @@ export default function Dashboard() {
 
     if (!data) return <p className="text-center text-gray-500 mt-10">Loading dashboard...</p>;
 
-    // Reward logic based on totalRaised
     const calculateRewards = (amount) => {
         const rewards = [];
         if (amount >= 500) rewards.push("🎁 Bronze Badge");

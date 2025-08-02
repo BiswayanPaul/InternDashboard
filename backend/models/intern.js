@@ -4,7 +4,7 @@ const InternSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true, // Ensure each intern has a unique login name
+        unique: true,
     },
     referralCode: {
         type: String,
@@ -22,7 +22,7 @@ const InternSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        default: '12345678' // ✅ default password for new interns
+        default: '12345678'
     },
     createdAt: {
         type: Date,

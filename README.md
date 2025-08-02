@@ -103,7 +103,6 @@ Make sure your frontend is calling the **local** backend during development.
 Update API URLs in Axios if needed:
 
 ```js
-// Example:
 axios.get('http://localhost:5000/api/intern/all')
 ```
 

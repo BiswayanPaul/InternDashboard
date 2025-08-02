@@ -13,7 +13,6 @@ mongoose.connect(process.env.DATABASE_URL)
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.error('MongoDB Error:', err.message));
 
-// Use routes
 app.use('/api/intern', internRoutes);
 
 const PORT = process.env.PORT || 5000;

@@ -6,7 +6,7 @@ export default function Home() {
         <div className="w-full h-[90%] flex-1 flex items-center justify-center bg-gradient-to-br from-indigo-200 via-white to-purple-200">
             <div className="flex flex-col justify-center items-center text-center h-[70%] bg-white/80 backdrop-blur-lg border border-gray-300 rounded-3xl shadow-xl p-8 sm:p-10 max-w-3xl w-[90%]">
                 <h1 className="text-4xl sm:text-5xl font-extrabold text-indigo-800 mb-4 leading-tight drop-shadow-md">
-                    Welcome to <span className="text-purple-700">InternTaskR1</span> 🚀
+                    Welcome to <span className="text-purple-700">InternTask</span> 🚀
                 </h1>
                 <p className="text-lg sm:text-xl text-gray-700 mb-8 max-w-md">
                     Manage interns, view leaderboards, and track donations — all in one place.

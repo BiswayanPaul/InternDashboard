@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../utils/api';
 
 export default function Signup() {
     const [name, setName] = useState('');
@@ -9,7 +10,7 @@ export default function Signup() {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/intern/add', { name });
+            await axios.post(`${API_BASE_URL}/api/intern/add`, { name });
             alert('Intern added with default password: 12345678');
             navigate('/login');
         } catch (err) {

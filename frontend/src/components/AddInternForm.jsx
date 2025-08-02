@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/api';
+
 
 export default function AddInternForm() {
     const [formData, setFormData] = useState({
@@ -25,7 +27,7 @@ export default function AddInternForm() {
             const { name, referralCode, totalRaised } = formData;
             const finalReferralCode = referralCode.trim() !== '' ? referralCode : generateReferralCode(name);
 
-            await axios.post('http://localhost:5000/api/intern/add', {
+            await axios.post(`${API_BASE_URL}/api/intern/add`, {
                 name,
                 referralCode: finalReferralCode,
                 totalRaised: Number(totalRaised)

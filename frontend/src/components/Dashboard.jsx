@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../hook/useAuth';
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/api';
 
 export default function Dashboard() {
     const { user } = useAuth();
@@ -8,7 +9,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/api/intern/dashboard/${encodeURIComponent(user.name)}`)
+            .get(`${API_BASE_URL}/api/intern/dashboard/${encodeURIComponent(user.name)}`)
             .then(res => setData(res.data))
             .catch(err => console.error(err));
     }, [user.name]);

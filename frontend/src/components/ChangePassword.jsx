@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../hook/useAuth';
+import { API_BASE_URL } from '../utils/api';
+
 
 export default function ChangePassword() {
     const { user } = useAuth();
@@ -10,7 +12,7 @@ export default function ChangePassword() {
     const handleChange = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/intern/change-password', {
+            await axios.post(`${API_BASE_URL}/api/intern/change-password`, {
                 name: user.name,
                 oldPassword: oldPass,
                 newPassword: newPass

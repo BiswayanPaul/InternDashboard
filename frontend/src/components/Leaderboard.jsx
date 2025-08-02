@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { API_BASE_URL } from '../utils/api';
 export default function Leaderboard() {
     const [interns, setInterns] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/intern/all')
+        axios.get(`${API_BASE_URL}/api/intern/all`)
             .then(res => {
                 const sorted = res.data.sort((a, b) => b.totalRaised - a.totalRaised);
                 setInterns(sorted);

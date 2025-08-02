@@ -7,11 +7,10 @@ router.post('/add', async (req, res) => {
     try {
         const { name, referralCode, totalRaised } = req.body;
         const existing = await Intern.findOne({ name });
-
         if (existing) return res.status(400).json({ message: 'Intern already exists' });
 
         const total = Number(totalRaised) || 0;
-
+        const referralCode1 = referralCode || `${name.toLowerCase().replace(/\s+/g, '')}2025`;
         // Simple reward tiers based on amount raised
         const calculateRewards = (amount) => {
             const rewards = [];
@@ -26,7 +25,7 @@ router.post('/add', async (req, res) => {
 
         const newIntern = new Intern({
             name,
-            referralCode,
+            referralCode1,
             totalRaised: total,
             password: '12345678', // default
             rewards: calculateRewards(total),

@@ -9,7 +9,7 @@ router.post('/add', async (req, res) => {
         if (existing) return res.status(400).json({ message: 'Intern already exists' });
 
         const total = Number(totalRaised) || 0;
-        const referralCode1 = referralCode || `${name.toLowerCase().replace(/\s+/g, '')}2025`;
+        const generatedRefCode = referralCode || `${name.toLowerCase().replace(/\s+/g, '')}2025`;
         const calculateRewards = (amount) => {
             const rewards = [];
             if (amount >= 500) rewards.push("🎁 Bronze Badge");
@@ -23,7 +23,7 @@ router.post('/add', async (req, res) => {
 
         const newIntern = new Intern({
             name,
-            referralCode1,
+            referralCode: generatedRefCode,
             totalRaised: total,
             password: '12345678',
             rewards: calculateRewards(total),
